@@ -87,7 +87,7 @@ Configurar I2C en Arduino UNO
 Vamos a tener que cargar un código al que hace de esclavo (slave). Haremos uso de la librería Wire, que nos proporcionará todos los métodos y propiedades para poder utilizar el protocolo I2C de una forma sencilla.
 Lo primero que hay que destacar es que tendremos un evento que se disparará cuando reciba un dato del  dispositivo master. La primera parte leerá un entero (int) y la segunda parte leerá un carácter (char). Dependiendo de si el carácter es H o L pondrá en estado alto (H) o bajo (L).
 
-``
+````
 #include <Wire.h>
 void setup() {
   // Unimos este dispositivo al bus I2C
@@ -126,7 +126,7 @@ void loop() {
     estado = 0;
   }
 }
-``
+````
 
 Configurar SPI en Raspberry PI
 =
