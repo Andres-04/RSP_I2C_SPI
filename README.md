@@ -169,7 +169,31 @@ spi.close()
 
 Configurar SPI en Arduino UNO
 =
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+En esta sección, aprenderá a usar la interfaz SPI para enviar y recibir datos en serie para interactuar con sensores y otros dispositivos.
+
+```
+#include 
+
+int slaveSelect = 2;
+
+int delayTime = 50;
+
+void setup() {
+  pinMode(slaveSelect, OUTPUT);
+  SPI.begin();
+  SPI.setBitOrder(LSBFIRST);   
+}
+
+void loop() {
+  for (int i; i < 256; i++)        //For loop to set data = 0 then increase it by one for every iteration of the loop, when the counter reaches the condition (256) it will be reset
+  {
+    digitalWrite(slaveSelect, LOW);            //Write our Slave select low to enable the SHift register to begin listening for data
+    SPI.transfer(i);                     //Transfer the 8-bit value of data to shift register, remembering that the least significant bit goes first
+    digitalWrite(slaveSelect, HIGH);           //Once the transfer is complete, set the latch back to high to stop the shift register listening for data
+    delay(delayTime);                             //Delay
+  }
+}
+```
 
 Implementación del protocolo I2C
 =
@@ -212,3 +236,6 @@ Codigoooooo
 
 
 https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/
+https://arduino.stackovernet.com/es/q/5681 - Para SPI
+https://projectiot123.com/2019/01/19/spi-interface-of-raspberry-pi-using-python/ SPI RSP
+https://core-electronics.com.au/tutorials/arduino-workshop-for-beginners.html SPI Arduino
