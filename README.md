@@ -25,31 +25,57 @@ Con el fin de familiarizarnos mejor con las ventajas entre estos dos tipos de pr
 
 Configurar I2C en Raspberry PI
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 Configurar I2C en Arduino UNO
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 Configurar SPI en Raspberry PI
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 Configurar SPI en Arduino UNO
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 Implementación del protocolo I2C
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+-Diagrama de bloques implementado:
+Imagen
+
+-Criterios de diseño
+Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo I2C y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
+
+-Esquematico del circuito
+Imagen
+
+-Código utilizado
+Maestro:
+Codigoooooo
+Esclavo:
+Codigoooooo
 
 Implementación del protocolo SPI
 =
-Se hace de talddddddddddddddddddddddddddddddd
-forma caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+-Diagrama de bloques implementado:
+Imagen
+
+-Criterios de diseño
+Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo I2C y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
+
+-Esquematico del circuito
+Imagen
+
+-Código utilizado
+Maestro:
+Codigoooooo
+Esclavo:
+Codigoooooo
+
+
 
