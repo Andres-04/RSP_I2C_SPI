@@ -230,7 +230,9 @@ Codigoooooo
 
 Implementación del protocolo SPI
 =
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+SPI es un acrónimo para referirse al protocolo de comunicación serial Serial Peripherical Interface. Este protocolo nace casi a principios de 1980 cuando Motorola lo comienza a introducir y desarrollar en el primer microcontrolador derivado de la misma arquitectura del microcontrolador 680000. SPI se ha convertido es uno de los más populares protocolos para trabajar con comunicación serial debido a su velocidad de transmisión, simplicidad, funcionamiento y también gracias a que muchos dispositivos en el mercado como pantallas LCD, sensores, microcontroladores pueden trabajar con el.
+
+Al ser uno de los protocolos seriales más conocidos, es muy importante que aprendamos su uso. Luego de haber seguido los pasos de `Configurar SPI en Raspberry PI` y `Configurar SPI en Arduino UNO` procederemos a realizar las conexiones, en este caso, encenderemos un LED conectado al Arduino UNO enviando la orden desde la Raspberry PI.
 
 - Diagrama de bloques implementado:
 
