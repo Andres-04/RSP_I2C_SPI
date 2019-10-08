@@ -21,4 +21,4 @@ Materiales utilizados:
 Cuadro comparativo entre I2C y SPI:
 ===========
 Con el fin de familiarizarnos mejor con las ventajas entre estos dos tipos de protocolos realizamos la siguiente tabla
-![alt Jajajajajajajajaajaj :p](hhttps://drive.google.com/file/d/1a1jH_W-B-CrcfPCEluum4NiNh50Shz16/view?usp=sharing)
+![alt Jajajajajajajajaajaj :p](https://raw.githubusercontent.com/Andres-04/RSP_I2C_SPI/master/Imagen1.png?token=ANCIDMYLPXRNFSXGBOCDOPC5TPNIU)
