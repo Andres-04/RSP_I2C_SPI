@@ -1,4 +1,5 @@
 # Protocolos de comunicaciones para intercomunicar dispositivos IoT
+
 Luego de aprender acerca de los diferentes tipos de protocolos usados en la industria para envio de datos, llevamos a cabo el siguiente taller con el fin de afianzar los conocimientos obtenidos en clase.
 
 Objetivos requeridos
@@ -232,27 +233,39 @@ Implementación del protocolo SPI
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 - Diagrama de bloques implementado:
+
 El diagrama de bloques implementado para la solución fue el siguiente:
 
 ![Diagrama SPI](https://user-images.githubusercontent.com/54821299/66440346-59d80000-e9f8-11e9-8978-d4beb1342c99.jpg)
 
-- Criterios de diseño
+- Criterios de diseño:
+
 Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo SPI y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
 
-- Esquematico del circuito
+- Esquematico del circuito:
+
 Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las conexiónes quedaron de la siguiente manera:
 
 ![SPI](https://user-images.githubusercontent.com/54821299/66438838-7cb3e580-e9f3-11e9-9265-78c056884dbb.jpg)
 
-- Código utilizado
+- Código utilizado:
+
 Maestro:
+
 Codigoooooo
+
 Esclavo:
+
 Codigoooooo
 
+Referencias:
+=
 
 
-https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/
+[HetPro (2016)](https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/). Configuración I2C en Raspberry PI.
+
+
+
 https://arduino.stackovernet.com/es/q/5681 - Para SPI
 https://projectiot123.com/2019/01/19/spi-interface-of-raspberry-pi-using-python/ SPI RSP
 https://core-electronics.com.au/tutorials/arduino-workshop-for-beginners.html SPI Arduino
