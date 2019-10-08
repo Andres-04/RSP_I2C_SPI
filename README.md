@@ -206,7 +206,9 @@ Imagen
 Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo I2C y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
 
 - Esquematico del circuito
-Imagen
+Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las conexiónes quedaron de la siguiente manera:
+
+![I2C](https://user-images.githubusercontent.com/54821299/66438634-e1bb0b80-e9f2-11e9-9dff-9c4a8765625c.jpg)
 
 - Código utilizado
 Maestro:
