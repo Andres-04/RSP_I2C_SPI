@@ -224,10 +224,12 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 Imagen
 
 - Criterios de diseño
-Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo I2C y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
+Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo SPI y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
 
 - Esquematico del circuito
-Imagen
+Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las conexiónes quedaron de la siguiente manera:
+
+![SPI](https://user-images.githubusercontent.com/54821299/66438838-7cb3e580-e9f3-11e9-9265-78c056884dbb.jpg)
 
 - Código utilizado
 Maestro:
