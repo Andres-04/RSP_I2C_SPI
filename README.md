@@ -22,7 +22,7 @@ Cuadro comparativo entre I2C y SPI
 ===========
 Con el fin de familiarizarnos mejor con las ventajas entre estos dos tipos de protocolos realizamos la siguiente tabla
 
-![Tabla](https://raw.githubusercontent.com/Andres-04/RSP_I2C_SPI/master/Imagen1.png?token=ANCIDMYLPXRNFSXGBOCDOPC5TPNIU)
+![Tabla](https://raw.githubusercontent.com/Andres-04/RSP_I2C_SPI/master/Imagen1.png?token=ANCIDM3GPGLMPSHRCFHR3KS5TSWGO)
 
 Configurar I2C en Raspberry PI
 =
