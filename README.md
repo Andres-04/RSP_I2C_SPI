@@ -262,10 +262,8 @@ Referencias:
 =
 
 
-[HetPro (2016)](https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/). Configuración I2C en Raspberry PI.
+- [HetPro (2016)](https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/). Configuración I2C en Raspberry PI.
+- [Arduino StackOvernet (2014)](https://arduino.stackovernet.com/es/q/5681). Configuración SPI en Arduino UNO
+- [Project IoT (2019)](https://projectiot123.com/2019/01/19/spi-interface-of-raspberry-pi-using-python/). Configuración SPI Raspberry PI
+- [Core Electronics (2017)](https://core-electronics.com.au/tutorials/arduino-workshop-for-beginners.html). SPI en Arduino
 
-
-
-https://arduino.stackovernet.com/es/q/5681 - Para SPI
-https://projectiot123.com/2019/01/19/spi-interface-of-raspberry-pi-using-python/ SPI RSP
-https://core-electronics.com.au/tutorials/arduino-workshop-for-beginners.html SPI Arduino
