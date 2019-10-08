@@ -27,46 +27,43 @@ Configurar I2C en Raspberry PI
 =
 Estos pasos solo son validos para Raspbian, revisa el SO que estas utilizando ya que hay unos que vienen listos para usar el I2C, de cualquier manera se recomienda actualizar la versión del SO que se este utilizando. Para comenzar abrimos la terminal y escribimos el siguiente comando:
 
- 
-
+``
 sudo nano /etc/modules
- 
+``
 
 se abrirá un archivo, tenemos que añadir estas 2 lineas de código al final del archivo:
-
+``
 i2c-bcm2708
 i2c-dev
- 
+``
 
 Una vez agregadas las lineas previamente mencionadas, procedemos a guardar el archivo y a reiniciar la raspberry pi.
-
 Para poder usar instrucciones de i2c es necesario instalar las siguientes instancias, esto lo haremos escribiendo en la terminal:
-
+``
 sudo apt-get install python-smbus
 sudo apt-get install i2c-tools
- 
+``
 
 posteriormente vamos a escribir:
-
+``
 sudo nano /etc/modprobe.d/raspi-blacklist.conf
- 
+``
 
 y comentamos las 2 lineas, tiene que quedar asi:
-
+```
 #blacklist spi-bcm2708
 #blacklist i2c-bcm2708
-````````````
- 
+```
 
 Para guardar y salir podemos usar CTRL-x y Y.
 
 Una vez que se hayan realizado los pasos previos podemos escribir en la terminal:
-
+``
 sudo i2cdetect -y 1
- 
+``
 
 Esta instrucción, realizara un barrido de las direcciones y desplegara la misma una vez encuentre algún dispositivo. OJO! si no te funciona prueba con un «-y 0» envés de «-y 1», esto significa que tienes una revisión pasada de la rapsberry pi, en la nueva revisión se usa el puerto I2C 1 del hardware.
-
+``
 pi@raspberrypi ~ $ i2cdetect -y 1
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- 04 -- -- -- -- -- -- -- -- -- -- --
@@ -77,7 +74,7 @@ pi@raspberrypi ~ $ i2cdetect -y 1
 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
-
+``
 Configurar I2C en Arduino UNO
 =
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
