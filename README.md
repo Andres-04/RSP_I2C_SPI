@@ -202,22 +202,29 @@ Abreviatura de Inter-IC (inter integrated circuits), un tipo de bus diseñado po
 Al ser uno de los protocolos seriales más conocidos, es muy importante que aprendamos su uso. Luego de haber seguido los pasos de `Configurar I2C en Raspberry PI` y `Configurar I2C en Arduino UNO` procederemos a realizar las conexiones, en este caso, encenderemos un LED conectado al Arduino UNO enviando la orden desde la Raspberry PI.
 
 - Diagrama de bloques implementado:
+
 El diagrama de bloques implementado para la solución fue el siguiente:
 
 ![Diagrama I2C](https://user-images.githubusercontent.com/54821299/66440357-5e041d80-e9f8-11e9-90a9-3ae4c05e0c55.jpg)
 
-- Criterios de diseño
+- Criterios de diseño:
+
 Los criterios de diseño que implementamos fue que la solución final debia conectar entre si, una Raspberry PI y un Arduino UNO mediante el protocolo I2C y encender un LED desde el Arduino UNO y recibiendo esta orden de la Raspberry PI configurada como maestro en este caso.
 
-- Esquematico del circuito
+- Esquematico del circuito:
+
 Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las conexiónes quedaron de la siguiente manera:
 
 ![I2C](https://user-images.githubusercontent.com/54821299/66438634-e1bb0b80-e9f2-11e9-9dff-9c4a8765625c.jpg)
 
-- Código utilizado
+- Código utilizado:
+
 Maestro:
+
 Codigoooooo
+
 Esclavo:
+
 Codigoooooo
 
 Implementación del protocolo SPI
