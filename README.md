@@ -21,6 +21,7 @@ Materiales utilizados
 Cuadro comparativo entre I2C y SPI
 ===========
 Con el fin de familiarizarnos mejor con las ventajas entre estos dos tipos de protocolos realizamos la siguiente tabla
+
 ![Tabla](https://raw.githubusercontent.com/Andres-04/RSP_I2C_SPI/master/Imagen1.png?token=ANCIDMYLPXRNFSXGBOCDOPC5TPNIU)
 
 Configurar I2C en Raspberry PI
@@ -83,7 +84,49 @@ pi@raspberrypi ~ $ i2cdetect -y 1
 
 Configurar I2C en Arduino UNO
 =
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+Vamos a tener que cargar un código al que hace de esclavo (slave). Haremos uso de la librería Wire, que nos proporcionará todos los métodos y propiedades para poder utilizar el protocolo I2C de una forma sencilla.
+Lo primero que hay que destacar es que tendremos un evento que se disparará cuando reciba un dato del  dispositivo master. La primera parte leerá un entero (int) y la segunda parte leerá un carácter (char). Dependiendo de si el carácter es H o L pondrá en estado alto (H) o bajo (L).
+
+``
+#include <Wire.h>
+void setup() {
+  // Unimos este dispositivo al bus I2C
+  Wire.begin();
+}
+
+byte pin[] = {2, 3, 4, 5, 6};
+byte estado = 0;
+
+void loop() {
+  for (int i = 0; i < 5; i++)
+  {
+    // Comenzamos la transmisión al dispositivo 1
+    Wire.beginTransmission(1);
+
+    // Enviamos un byte, será el pin a encender
+    Wire.write(pin[i]);
+
+    // Enviamos un byte, L pondrá en estado bajo y H en estado alto
+    Wire.write(estado);
+
+    // Paramos la transmisión
+    Wire.endTransmission();
+
+    // Esperamos 1 segundo
+    delay(1000);
+  }
+
+  // Cambiamos el estado
+  if (estado == 0)
+  {
+    estado = 1;
+  }
+  else
+  {
+    estado = 0;
+  }
+}
+``
 
 Configurar SPI en Raspberry PI
 =
@@ -133,3 +176,4 @@ Codigoooooo
 
 
 
+https://hetpro-store.com/TUTORIALES/python-i2c-uso-y-configuracion/
