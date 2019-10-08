@@ -130,7 +130,42 @@ void loop() {
 
 Configurar SPI en Raspberry PI
 =
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+A continuación mostraremos una forma de configurar el protocolo SPI en la Raspberry PI desde Python, para eso, abrimos el terminal y escribiremos los siguientes comandos:
+
+```
+sudo apt get-update
+sudo apt get-upgrade
+sudo apt get-install python-dev python3-devcd ~
+git clone https: //github.com/doceme/py-spidev.git
+cd py-spidev
+make
+sudo make install
+```
+
+Luego de esto procederemos a cargar el codigo SPI que leera los datos recibidos del esclavo. Para esto nos dirigimos a Programming y luego a Python 3 y copiamos y pegamos el siguiente código:
+
+```
+import spidev
+import time
+spi = spidev.SpiDev()
+spi.open(0, 0)
+spi.mode = 0b11
+try:
+while True:
+resp = spi.readbytes(3)
+if (resp[0] != 255):
+print(resp)
+value = resp[1] + resp[2]
+print(value)
+byte1 = bin(resp[0])[2:].rjust(8,'0')
+byte2 = bin(resp[1])[2:].rjust(8,'0')
+byte3 = bin(resp[2])[2:].rjust(8,'0')
+bits = byte1 + byte2 + byte3
+print(byte)
+time.sleep(0.1)
+except KeyboardInterrupt:
+spi.close()
+```
 
 Configurar SPI en Arduino UNO
 =
