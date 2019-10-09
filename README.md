@@ -311,7 +311,7 @@ Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las
 
 - Evidencias:
 
-
+![SPI_evidence](https://user-images.githubusercontent.com/54821299/66445632-07550e80-ea0d-11e9-82c3-0aaa632c3fee.jpg)
 
 - Código utilizado:
 
