@@ -218,6 +218,10 @@ Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las
 
 ![I2C](https://user-images.githubusercontent.com/54821299/66438634-e1bb0b80-e9f2-11e9-9dff-9c4a8765625c.jpg)
 
+- Evidencias:
+
+![I2C_evidence](https://user-images.githubusercontent.com/54821299/66445459-84cc4f00-ea0c-11e9-80d3-0fc095cb5dfc.jpg)
+
 - Código utilizado:
 
 Maestro:
@@ -304,6 +308,10 @@ Los criterios de diseño que implementamos fue que la solución final debia cone
 Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las conexiónes quedaron de la siguiente manera:
 
 ![SPI](https://user-images.githubusercontent.com/54821299/66438838-7cb3e580-e9f3-11e9-9265-78c056884dbb.jpg)
+
+- Evidencias:
+
+
 
 - Código utilizado:
 
