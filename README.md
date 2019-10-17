@@ -227,64 +227,73 @@ Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las
 Maestro:
 
 ```
-import time
-import threading
-#Libreria para comunicacion I2C con arduino.
 import smbus
-#Configurando I2C como master
+import time
 bus = smbus.SMBus(1)
-#Asignamos la direccion 0x04 que es la misma direccion del Arduino
-direccion1 = 0x38
-#Interrupcion por hardware
-def pinkCall(channel):
-    pulsador = Raspberry()
-    inputValue = GPIO.input(4)
-    
-    if(inputValue == True):
-        #Apagamos el led desde el pulsador
-        GPIO.output(4, 0)
-        #Se envia el numero 0 al Arduino via I2C
-        bus.write_byte(direccion1, 0)
+address = 0x04
 
-    if(inputValue == False):
-        #Encendemos el led desde el pulsador
-        GPIO.output(4, 1)
-        #Se envia el numero 1 al Arduino via I2C
-        bus.write_byte(direccion1, 1)
+
+def Leer():
+	Temp = bus.read_byte(address)
+return Temp
+
+Temp = Leer()
+print "La temperatura es: ", Temp
+
+def Escribir(value):
+	if(Temp > 26):
+		Led = bus.write_byte(address, 1)
+	if(Temp <= 26):
+		Led = bus.write_byte(address, 0)
+time.sleep(1)	
 
 ```
 
 Esclavo:
 
 ```
-#include <Wire.h> //Librería I2C
-#define direccion1 = 0x38 //Definimos la dirección I2C
-int LED2 = 13;
+#include <Wire.h>
+#include <DallasTemperature.h>
+#define address = 0x04
+int Led = 3;
+int stateLed = 0;
+OneWire ourWire(2);
+DallasTemperature sensors(&ourWire);
 void setup() {
-  pinMode(LED13, OUTPUT);
-  Wire.begin(); //Inicializamos la comunicación I2C
+  delay(1000);
   Serial.begin(9600);
+  pinMode(Led, OUTPUT)
+  sensors.begin(); // Revisar 
+  Wire.begin(address)
+  Wire.onReceive(Leer);
+  Wire.onRequest(Escribir);
+  Serial.println("Ready");
 }
 
 void loop() {
-  byte cual;
-  cual = Leer(direccion1); //Leemos la dirección
-  if(bitRead(cual,0)) //leemos el bit recibido por I2C
-    digitalWrite(LED13, LOW);
-  else
-    digitalWrite(LED13, HIGH);
-
+  sensors.requestTemperatures();
+  float Temp = sensors.getTempCByIndex(0);
+  Serial.print("Temperatura= ");
+  Serial.print(Temp);
   delay(100);
 }
 
-byte Leer(int direccion) {
-  byte LeeDato = 0xff; //Creamos la función leer para identificar los datos recibidos
-  Wire.requestFrom(direccion,1);
-  if(Wire.available()){
-    LeeDato = Wire.read();
+void Leer(int byteCount){
+  while(Wire.available()){
+    stateLed = Wire.read();
+    if(stateLed == 1){
+      digitalWrite(Led, HIGH);
+    }
+    if(stateLed == 0){
+      digitalWrite(Led, LOW);
+    }
   }
-  return LeeDato;
 }
+
+void Escribir(){
+  Wire.write(Temp);
+}
+
 ```
 
 Implementación del protocolo SPI
@@ -318,91 +327,88 @@ Para el esquematico del circuito decidimos utilizar la herramienta Fritzing. Las
 Maestro:
 
 ```
-from time import sleep
-#Librería SPI
+# SPI RASPBERRY MASTER
+
+#!/usr/bin/python
+
 import spidev
+import time
+import RPi.GPIO as GPIO
+import sys
+
+CLK = 18
+MISO = 23
+MOSI = 24
+CS = 25
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+
 spi = spidev.SpiDev()
-spi.open(0,0)
-spi.max_speed_hz = 250000
-pulsador = Raspberry()
-inputValue = GPIO.input(4)
+spi.open(0, 0)
+spi.max_speed_hz = 7629
 
-try:
-	while True:
-		if(inputValue == 0):
-			#Se envia el numero 0 al Arduino 
-     			spi.xfer2(0)
-			print "Off"
-		
-    		if(inputValue == 1):
-        		#Se envia el numero 1 al Arduino
-        		spi.xfer2(1)
-			print "On"
+# INTEGRAR LA SALIDA DE DOS BYTES
+def write_pot(input):
+    msb = input >> 8
+    lsb = input & 0xFF
+    spi.xfer([msb, lsb])
 
-
-finally:     # run on exit
-	spi.close()         # clean up
-    	print "All cleaned up."
-
+while True:
+    write_pot(0x00) # ENVIAR UN "0"
+    print("0")
+    while GPIO.input(18) == 1: # LEER EL PULSADOR
+        print("1")
+        write_pot(0x1FF) # ENVIAR UN "1"
+    time.sleep(1)
 ```
 
 Esclavo:
 
 ```
-#include "pins_arduino.h"
+//PROTOCOLO SPI, ARDUINO COMO ESCLAVO 
 
-char buf [100];
-volatile byte pos;
-volatile boolean process_it;
-pulsador = byte entrada = shiftIn(12, 11, LSB_FIRST);
+#include<SPI.h>
+#define LEDpin 7 // PIN DE SALIDA
 
-void setup (void)
+volatile boolean received; // BANDERA
+volatile byte Slavereceived,Slavesend; // VARIABLES PARA RECIBIR Y ENVIAR DATOS
+int x=0;
+void setup()
 {
- Serial.begin (9600);   // debugging
+  Serial.begin(9600);
+  pinMode(LEDpin,OUTPUT); // SALIDA AL LED              
+  pinMode(MISO,OUTPUT); // CONFIGURACION DE MISO COMO SALIDA ,ENVIO DE DATOS AL MASTER 
 
- // have to send on master in, *slave out*
- pinMode(MISO, OUTPUT);
- 
- // turn on SPI in slave mode
- SPCR |= _BV(SPE);
- 
- // turn on interrupts
- SPCR |= _BV(SPIE);
- 
- pos = 0;
- process_it = false;
-}  // end of setup
+  SPCR |= _BV(SPE); // SPI EN MODO ESCLAVO
+  received = false; // BANDERA DESACTIVADA
 
-
-// SPI interrupt routine
-ISR (SPI_STC_vect)
-{
-byte c = SPDR;
- 
- // add to buffer if room
- if (pos < sizeof buf)
-   {
-   buf [pos++] = c;
-   
-   // example: newline means time to process buffer
-   if (c == '\n')
-     process_it = true;
-     
-   }  // end of room available
+  SPI.attachInterrupt(); // INTERRUPCIÓN COMUNICACIÓN SPI
 }
 
-// main loop - wait for flag set in interrupt routine
-void loop (void)
+ISR (SPI_STC_vect) // INTERRUPCIÓN
 {
- if (process_it)
-   {
-   buf [pos] = 0;  
-   Serial.println (buf);
-   pos = 0;
-   process_it = false;
-   }  // end of flag set
-   
-}  // end of loop
+  Slavereceived = SPDR; // VALOR RECIBIDO DESDE EL MAESTRO
+  received = true; //BANDERA ACTIVA 
+}
+
+void loop()
+{
+  if(received) // ESTADO DE LA BANDERA
+  {
+      digitalWrite(LEDpin,LOW); // LED APAGADO
+      Serial.println("LED OFF");
+      while (Slavereceived==1) // SEÑAL "1" DESDE EL MAESTRO
+      {
+        digitalWrite(LEDpin,HIGH); // LED ENCENDIDO
+        Serial.println("LED ON");
+      }
+      
+  Slavesend=x;                             
+  SPDR = Slavesend; // ENVIAR DATOS AL MAESTRO POR SPDR 
+  delay(1000);
+  }
+}
 ```
 
 Referencias:
